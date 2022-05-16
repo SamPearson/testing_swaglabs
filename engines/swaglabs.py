@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from logs import log_configuration
+logger = log_configuration.init_logger(__name__)
 
 
 class SwagLabsEngine():
@@ -14,6 +16,7 @@ class SwagLabsEngine():
         password_field = self.driver.find_element(By.XPATH, "//input[@data-test='password']")
         password_field.send_keys(password)
 
+        logger.debug("Ready to click the login button")
         login_button = self.driver.find_element(By.XPATH, "//input[@data-test='login-button']")
         login_button.click()
 
